@@ -3,10 +3,10 @@ import React from 'react';
 import Colors from '@/constants/Colors';
 import { ButtonText } from './StyledText';
 
-const CustomButton = ({ onPress }: { onPress: () => void }) => {
+const CustomButton = ({ onPress, text }: { onPress: () => void; text: string }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.button}>
-      <ButtonText>Get Started</ButtonText>
+      <ButtonText>{text}</ButtonText>
     </TouchableOpacity>
   );
 };

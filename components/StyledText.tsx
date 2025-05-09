@@ -7,15 +7,15 @@ interface StyledTextProps {
 }
 
 export const BodyText = (props: PropsWithChildren & StyledTextProps) => {
-  return <Text style={styles.bodyText}>{props.children}</Text>;
+  return <Text style={[styles.bodyText, props.addStyles]}>{props.children}</Text>;
 };
 
 export const TitleText = (props: PropsWithChildren & StyledTextProps) => {
-  return <Text style={styles.titleText}>{props.children}</Text>;
+  return <Text style={[styles.titleText, props.addStyles]}>{props.children}</Text>;
 };
 
 export const ButtonText = (props: PropsWithChildren & StyledTextProps) => {
-  return <Text style={styles.buttonText}>{props.children}</Text>;
+  return <Text style={[styles.buttonText, props.addStyles]}>{props.children}</Text>;
 };
 
 const styles = StyleSheet.create({

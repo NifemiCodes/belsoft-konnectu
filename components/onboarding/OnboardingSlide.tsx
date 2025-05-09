@@ -1,8 +1,10 @@
-import { Animated, StyleSheet, useWindowDimensions, View } from 'react-native';
+import { Animated, StyleSheet, TouchableOpacity, useWindowDimensions, View } from 'react-native';
 import Colors from '@/constants/Colors';
-import CustomButton from './CustomButton';
+import CustomButton from '../CustomButton';
 import Paginator from './Paginator';
 import { Slide } from '@/constants/slides';
+import { BodyText } from '../StyledText';
+import { router } from 'expo-router';
 
 interface OnboardingSlide {
   slide: Slide;
@@ -15,6 +17,10 @@ const OnboardingSlide = ({ slide, scrollx, handleNext }: OnboardingSlide) => {
 
   return (
     <View style={{ width, flex: 1 }}>
+      <TouchableOpacity style={styles.button} hitSlop={7} onPress={() => router.replace('/auth/register')}>
+        <BodyText addStyles={{ color: Colors.darkGray }}>Skip</BodyText>
+      </TouchableOpacity>
+
       {slide.image}
 
       <View style={styles.modal}>
@@ -22,7 +28,7 @@ const OnboardingSlide = ({ slide, scrollx, handleNext }: OnboardingSlide) => {
 
         <Paginator scrollX={scrollx} />
 
-        <CustomButton onPress={handleNext} />
+        <CustomButton onPress={handleNext} text="Get Started" />
       </View>
     </View>
   );
@@ -31,6 +37,13 @@ const OnboardingSlide = ({ slide, scrollx, handleNext }: OnboardingSlide) => {
 export default OnboardingSlide;
 
 const styles = StyleSheet.create({
+  button: {
+    position: 'absolute',
+    zIndex: 1,
+    top: 20,
+    right: 20,
+  },
+
   modal: {
     flex: 1,
     backgroundColor: Colors.deepGreen,

@@ -37,7 +37,7 @@ const slides: Slide[] = [
   },
 
   {
-    image: <Image2 height={500} />,
+    image: <Image2 width={'100%'} height={500} />,
     modalText: (
       <View style={{ rowGap: 16 }}>
         <RowText text="Select the perfect Tasker for your job  by reviews, skills, and price" />
