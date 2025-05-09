@@ -14,5 +14,5 @@ export default function RootLayout() {
     SplashScreen.hideAsync();
   }
 
-  return <Stack />;
+  return <Stack screenOptions={{ headerShown: false }} />;
 }
