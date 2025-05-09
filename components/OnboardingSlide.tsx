@@ -1,29 +1,28 @@
-import React from 'react';
-import { StyleSheet, Text, useWindowDimensions, View } from 'react-native';
-import Image1 from '@/assets/images/image_1.svg';
+import { Animated, StyleSheet, useWindowDimensions, View } from 'react-native';
 import Colors from '@/constants/Colors';
 import CustomButton from './CustomButton';
-import { BodyText, TitleText } from './StyledText';
+import Paginator from './Paginator';
+import { Slide } from '@/constants/slides';
 
-const OnboardingSlide = () => {
+interface OnboardingSlide {
+  slide: Slide;
+  scrollx: Animated.Value;
+  handleNext: () => void;
+}
+
+const OnboardingSlide = ({ slide, scrollx, handleNext }: OnboardingSlide) => {
   const { width } = useWindowDimensions();
 
   return (
     <View style={{ width, flex: 1 }}>
-      <Image1 style={{ width: '100%' }} />
+      {slide.image}
 
       <View style={styles.modal}>
-        <View style={{ rowGap: 16 }}>
-          <TitleText>
-            Help with Everyday <Text style={{ color: Colors.yellow }}>tasks</Text> at your fingertips
-          </TitleText>
+        {slide.modalText}
 
-          <BodyText>
-            Manage daily tasks, connect with trusted professionals,and take control of your life with our app
-          </BodyText>
-        </View>
+        <Paginator scrollX={scrollx} />
 
-        <CustomButton onPress={() => {}} />
+        <CustomButton onPress={handleNext} />
       </View>
     </View>
   );
